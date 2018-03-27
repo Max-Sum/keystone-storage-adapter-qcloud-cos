@@ -1,0 +1,38 @@
+{
+    "name": "keystone-storage-adapter-qcloud-cos",
+    "version": "1.0.0",
+    "description": "Qcloud COS storage adapter for keystonejs",
+    "main": "index.js",
+    "author": "Max Sum <max@lolyculture.com>",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/Max-Sum/keystone-storage-adapter-qcloud-cos/issues"
+    },
+    "homepage": "https://github.com/Max-Sum/keystone-storage-adapter-qcloud-cos",
+    "dependencies": {
+      "cos-nodejs-sdk-v5": "^2.3.5",
+      "keystone-storage-namefunctions": "^1.0.0",
+      "object-assign": "^4.1.0"
+    },
+    "devDependencies": {
+      "dotenv": "^2.0.0",
+      "eslint": "^3.2.2",
+      "mocha": "^3.0.0"
+    },
+    "scripts": {
+      "test": "eslint . && mocha test.js",
+      "lint": "eslint ."
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Max-Sum/keystone-storage-adapter-qcloud-cos.git"
+    },
+    "keywords": [
+      "qcloud-cos",
+      "keystone",
+      "keystone-storage",
+      "keystonejs",
+      "qcloud",
+      "storage"
+    ]
+  }
