@@ -59,12 +59,12 @@ COSAdapter.prototype.uploadFile = function (file, callback) {
         file.path = this.options.path[0] == '/' ? this.options.path.substr(1, this.options.path.length) : this.options.path;
         file.filename = filename;
         file.key = file.path + '/' + filename;
-        file.bucket = this.config.bucket;
+        file.bucket = this.options.bucket;
 
         let uploader = this.client.uploadFiles({
             files: [{
-                Bucket: this.config.bucket, // Bucket 格式：test-1250000000
-                Region: this.config.region,
+                Bucket: this.options.bucket, // Bucket 格式：test-1250000000
+                Region: this.options.region,
                 Key: file.key,
                 FilePath: localpath,
             }],
@@ -92,8 +92,8 @@ COSAdapter.prototype.uploadFile = function (file, callback) {
 COSAdapter.prototype.removeFile = function (file, callback) {
 	var fullpath = this._resolveFilename(file);
 	this.client.deleteObject({
-        Bucket: this.config.bucket, // Bucket 格式：test-1250000000
-        Region: this.config.region,
+        Bucket: this.options.bucket, // Bucket 格式：test-1250000000
+        Region: this.options.region,
         Key: file.key
     }, (err, data) => {
         console.log(err || data);
@@ -103,8 +103,8 @@ COSAdapter.prototype.removeFile = function (file, callback) {
 
 COSAdapter.prototype.getFileURL = function (file) {
     return this.client.getObjectUrl({
-        Bucket: this.config.bucket, // Bucket 格式：test-1250000000
-        Region: this.config.region,
+        Bucket: this.options.bucket, // Bucket 格式：test-1250000000
+        Region: this.options.region,
         Key: file.key
     }, (err, data) => {
         console.log(err || data);
