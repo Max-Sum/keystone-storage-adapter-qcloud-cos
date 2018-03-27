@@ -69,35 +69,32 @@ COSAdapter.prototype.uploadFile = function (file, callback) {
                 FilePath: localpath,
             }],
             onProgress: (info) => {
-                var percent = parseInt(info.percent * 10000) / 100;
-                var speed = parseInt(info.speed / 1024 / 1024 * 100) / 100;
+                let percent = parseInt(info.percent * 10000) / 100;
+                let speed = parseInt(info.speed / 1024 / 1024 * 100) / 100;
                 console.log('进度：' + percent + '%; 速度：' + speed + 'Mb/s;');
             },
             onFileFinish: (err, data, options) => {
-                if (err) {
-                    console.log(options.Key + ' 上传失败', err.stack);
-                    callback(new Error(err.stack));
-                } else {
-                    file.key = data.Key;
-                    callback(null, file);
-                }
+                console.log(options.Key + ' 上传' + (err ? '失败' : '完成'));
             },
         }, (err, data) => {
             console.log(err || data);
-            callback(new Error(err.stack))
+            if (err) {
+                callback(err)
+            } else {
+                callback(null, file)
+            }
         });
     });
 };
 
 COSAdapter.prototype.removeFile = function (file, callback) {
-	var fullpath = this._resolveFilename(file);
 	this.client.deleteObject({
         Bucket: this.options.bucket, // Bucket 格式：test-1250000000
         Region: this.options.region,
         Key: file.key
     }, (err, data) => {
         console.log(err || data);
-        callback(new Error(err.stack))
+        callback(err || data)
     })
 };
 
