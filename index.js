@@ -34,6 +34,8 @@ function COSAdapter(options, schema) {
     this.options.generateFilename = ensureCallback(this.options.generateFilename);
 }
 
+COSAdapter.compatibilityLevel = 1;
+
 // All the extra schema fields supported by this adapter.
 COSAdapter.SCHEMA_TYPES = {
     filename: String,
