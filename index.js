@@ -102,7 +102,8 @@ COSAdapter.prototype.getFileURL = function (file) {
     return this.client.getObjectUrl({
         Bucket: this.options.bucket, // Bucket 格式：test-1250000000
         Region: this.options.region,
-        Key: file.key
+        Key: file.key,
+        Sign: false
     }, (err, data) => {
         console.log(err || data);
     })
