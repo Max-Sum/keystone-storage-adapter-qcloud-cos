@@ -17,7 +17,7 @@ let DEFAULT_OPTIONS = {
 function COSAdapter(options, schema) {
     this.options = assign({}, DEFAULT_OPTIONS, options.cos);
 
-    this.client = new COS({
+    this.client = new cos({
         SecretId: this.options.secret,
         SecretKey: this.options.key,
         FileParallelLimit: 3,    // 控制文件上传并发数

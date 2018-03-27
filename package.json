@@ -1,6 +1,6 @@
 {
     "name": "keystone-storage-adapter-qcloud-cos",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Qcloud COS storage adapter for keystonejs",
     "main": "index.js",
     "author": "Max Sum <max@lolyculture.com>",
